@@ -1,0 +1,118 @@
+:root {
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #212529;
+  --muted: #868e96;
+  --primary: #228be6;
+  --radius: 12px;
+  --shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+body {
+  margin: 0;
+  font-family:'Roboto';
+  background: var(--bg);
+  color: var(--text);
+}
+
+.centered {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page {
+  padding: 3rem 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  background: var(--card);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 420px;
+}
+
+.card.large {
+  max-width: 700px;
+}
+
+.title {
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.label {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 1rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.65rem;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  margin-top: 0.25rem;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.button {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.7rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #1c7ed6;
+}
+
+.error {
+  color: #e03131;
+  margin-top: 0.75rem;
+}
+
+.content {
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+/* Carousel */
+.carousel {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.carousel-image {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.carousel-controls {
+  margin-top: 0.75rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.carousel-controls button {
+  border: none;
+  background: #e9ecef;
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
