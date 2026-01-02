@@ -10,7 +10,7 @@ export async function accessLetter(
   recipient: string,
   password: string
 ): Promise<Letter> { 
-  const url: string =  BACKEND_URL+"/api/message"   
+  const url: string =  BACKEND_URL+"api/message"   
   const res = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
