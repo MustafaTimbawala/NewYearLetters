@@ -32,10 +32,6 @@ app.use(cors({
 
 app.use(express.json()); 
 
-const upload = multer({
-  storage: multer.memoryStorage(),
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB per image
-});
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
@@ -74,52 +70,5 @@ app.post("/api/message/", async (req, res) => {
     }
 }); 
 
-app.post("/api/mssage/upload", upload.array("pics", 10), async (req, res) => {
-    try {
-      const { recipient, content } = req.body;
-      const files = req.files;
-
-      if (!recipient || !content) {
-        return res.status(400).json({ message: "Missing fields" });
-      }
-
-      const picUrls = [];
-
-      // Upload each image to Supabase
-      for (const file of files) {
-        const filePath = `letters/${Date.now()}-${file.originalname}`;
-
-        const { error } = await supabase.storage
-          .from("images") // your bucket name
-          .upload(filePath, file.buffer, {
-            contentType: file.mimetype,
-          });
-
-        if (error) {
-          throw error;
-        }
-
-        // Get public URL
-        const { data } = supabase.storage
-          .from("images")
-          .getPublicUrl(filePath);
-
-        picUrls.push(data.publicUrl);
-      }
-
-      // Save to MongoDB
-      const letter = await Letter.create({
-        recipient,
-        content,
-        pics: picUrls,
-      });
-
-      res.status(201).json(letter);
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ message: "Upload failed" });
-    }
-  }
-);
 
 
