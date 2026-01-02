@@ -84,7 +84,7 @@ body {
 .error {
   color: #e03131;
   margin-top: 0.75rem;
-  width: 100%;
+  width: 100px;
 }
 
 .content {
