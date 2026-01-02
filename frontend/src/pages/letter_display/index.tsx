@@ -4,11 +4,12 @@ import Carousel from "../../components/carousel";
 export default function LetterDisplayPage() {
   const location = useLocation();
   const letter = location.state;
-  console.log(letter);
-
+  
   if (!letter) {
     return <Navigate to="/login" replace />;
   }
+
+  console.log(letter);
 
   return (
     <div className="page">
