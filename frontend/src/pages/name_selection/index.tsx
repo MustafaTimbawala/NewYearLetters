@@ -27,7 +27,11 @@ export default function NameSelectorPage() {
       const letter = await accessLetter(recipient, password);
       navigate("/letter", { state: letter });
     } catch (err: unknown) {
-      setError(err.message);
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError(String(err));
+      }
     }
   }
 
