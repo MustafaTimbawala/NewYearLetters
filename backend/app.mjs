@@ -4,17 +4,9 @@ import { connectDB } from "./db/index.mjs";
 import letter from "./db/models/letter.mjs"; 
 import multer from "multer";
 import { FRONTEND_URL, PORT } from "./utils/env.mjs";
-import cors from 'cors';
 
 const app = express();  
 
-
-app.use(cors({
-  origin: [
-    FRONTEND_URL
-  ],
-  credentials: true
-}));
 
 
 connectDB().catch((err) => {
@@ -31,8 +23,13 @@ connectDB().catch((err) => {
  */
 
 
-// Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    FRONTEND_URL
+  ],
+  credentials: true
+}));
+
 app.use(express.json()); 
 
 const upload = multer({
