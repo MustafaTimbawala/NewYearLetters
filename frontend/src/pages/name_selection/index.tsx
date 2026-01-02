@@ -30,7 +30,8 @@ export default function NameSelectorPage() {
       if (err instanceof Error) {
         setError(err.message);
       } else {
-        setError(String(err));
+        setError(String(err)); 
+        console.log(error);
       }
     }
   }

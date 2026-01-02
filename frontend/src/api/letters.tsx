@@ -21,5 +21,6 @@ export async function accessLetter(
     const err = await res.json();
     throw new Error(err.error || "Access denied");
   }
+  
   return res.json();
 }
