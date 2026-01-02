@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 // Check if dist exists
 const distPath = path.join(__dirname, 'dist');
@@ -25,10 +25,10 @@ app.get('/health', (req, res) => {
 });
 
 // Serve static files from dist
-app.use(express.static(distPath, { index: false }));
+app.use(express.static(distPath));
 
-// SPA fallback - must be last
-app.get('*', (req, res) => {
+// SPA fallback - CHANGED TO app.use() instead of app.get('*')
+app.use((req, res) => {
   console.log('📄 Serving index.html for:', req.path);
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
