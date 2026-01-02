@@ -9,7 +9,7 @@ export const PORT = Number(process.env.PORT || 3002);
 export const DB_URI = process.env.DB_URI;
 export const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
 export const BACKEND_URL =
-  process.env.BACKEND_URL || `http://localhost:${PORT}`;
+  process.env.BACKEND_URL || `http://localhost:5173`;
 
 if (!DB_URI) {
   console.log("Missing DB_URI environment variable");

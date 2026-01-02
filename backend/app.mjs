@@ -3,10 +3,18 @@ import cors from "cors";
 import { connectDB } from "./db/index.mjs"; 
 import letter from "./db/models/letter.mjs"; 
 import multer from "multer";
+import { FRONTEND_URL, PORT } from "./utils/env.mjs";
+import cors from 'cors';
+
+const app = express();  
 
 
-const app = express();
-const PORT = 5000; 
+app.use(cors({
+  origin: [
+    FRONTEND_URL
+  ],
+  credentials: true
+}));
 
 
 connectDB().catch((err) => {
